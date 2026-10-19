@@ -1,0 +1,2387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>DayFlow — Student OS</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-theme="light" data-density="comfortable">
+
+  <!-- BACKGROUND -->
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="ambient ambient-three"></div>
+  <div class="grain"></div>
+
+  <div class="app">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+      <div class="brand-row">
+
+        <div class="brand-mark">
+          D
+        </div>
+
+        <div>
+          <div class="brand-name">DayFlow</div>
+          <div class="brand-sub">Student OS</div>
+        </div>
+
+      </div>
+
+
+      <button class="sidebar-profile" id="profileButton" type="button">
+
+        <div class="avatar avatar-small" id="sidebarAvatar">
+          S
+        </div>
+
+        <div class="sidebar-user-text">
+
+          <strong id="sidebarName">
+            Your Name
+          </strong>
+
+          <span id="sidebarCourse">
+            Student • College
+          </span>
+
+        </div>
+
+        <span class="profile-arrow">
+          ›
+        </span>
+
+      </button>
+
+
+      <nav class="sidebar-nav">
+
+        <button class="nav-item active" data-page="dashboard" type="button">
+          <span class="nav-icon">⌂</span>
+          <span>Dashboard</span>
+        </button>
+
+        <button class="nav-item" data-page="tasks" type="button">
+          <span class="nav-icon">✓</span>
+          <span>My Day</span>
+        </button>
+
+        <button class="nav-item" data-page="notes" type="button">
+          <span class="nav-icon">✎</span>
+          <span>Notes</span>
+        </button>
+
+        <button class="nav-item" data-page="planner" type="button">
+          <span class="nav-icon">◫</span>
+          <span>Planner</span>
+        </button>
+
+        <button class="nav-item" data-page="focus" type="button">
+          <span class="nav-icon">◉</span>
+          <span>Focus</span>
+        </button>
+
+        <button class="nav-item" data-page="sticky" type="button">
+          <span class="nav-icon">▣</span>
+          <span>Sticky Space</span>
+        </button>
+
+        <button class="nav-item" data-page="resources" type="button">
+          <span class="nav-icon">⌘</span>
+          <span>Resources</span>
+        </button>
+
+        <button class="nav-item" data-page="profile" type="button">
+          <span class="nav-icon">◯</span>
+          <span>Profile</span>
+        </button>
+
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <button class="theme-button" id="themeButton" type="button">
+          <span id="themeIcon">✦</span>
+          <span>Customize</span>
+        </button>
+
+        <div class="sidebar-tip">
+
+          <span class="tip-dot"></span>
+
+          <div>
+            <strong>Flow state</strong>
+            <small>Build your own system.</small>
+          </div>
+
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main">
+
+      <header class="topbar">
+
+        <button class="mobile-menu" id="mobileMenu" type="button">
+          ☰
+        </button>
+
+        <div class="page-heading">
+
+          <span class="topbar-eyebrow">
+            YOUR SPACE
+          </span>
+
+          <h1 id="pageTitle">
+            Dashboard
+          </h1>
+
+        </div>
+
+        <div class="topbar-actions">
+
+          <button class="icon-button" id="searchButton" type="button">
+            ⌕
+          </button>
+
+          <button class="top-new-button" id="newButton" type="button">
+            <span>＋</span>
+            <span>New</span>
+          </button>
+
+        </div>
+
+      </header>
+
+
+      <!-- =====================================================
+           DASHBOARD
+      ====================================================== -->
+
+      <section class="page active-page" id="dashboardPage">
+
+        <div class="page-shell">
+
+
+          <section class="hero-card">
+
+            <div class="hero-content">
+
+              <span class="eyebrow-pill">
+                TODAY • YOUR FLOW
+              </span>
+
+              <h2>
+                Build a day
+                <span>worth remembering.</span>
+              </h2>
+
+              <p id="heroNote">
+                Keep your work clear, your ideas close,
+                and your momentum moving.
+              </p>
+
+              <div class="hero-actions">
+
+                <button class="primary-button" id="dashboardAddTask" type="button">
+                  ＋ Add task
+                </button>
+
+                <button class="ghost-button hero-ghost" id="smallStartFocus" type="button">
+                  ◉ Start focus
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div class="hero-orbit">
+
+              <div class="orbit orbit-one"></div>
+              <div class="orbit orbit-two"></div>
+
+              <div class="orbit-core">
+                <span>✦</span>
+              </div>
+
+              <div class="floating-chip chip-one">
+                IDEAS
+              </div>
+
+              <div class="floating-chip chip-two">
+                FOCUS
+              </div>
+
+              <div class="floating-chip chip-three">
+                CREATE
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- STATS -->
+
+          <section class="stats-grid">
+
+            <div class="stat-card">
+
+              <div class="stat-top">
+                <span class="stat-label">Focus</span>
+                <span class="stat-icon">◉</span>
+              </div>
+
+              <strong class="stat-value" id="focusStat">0m</strong>
+
+              <div class="progress-track">
+                <span id="focusProgress"></span>
+              </div>
+
+              <small>Today's focused time</small>
+
+            </div>
+
+
+            <div class="stat-card">
+
+              <div class="stat-top">
+                <span class="stat-label">Tasks</span>
+                <span class="stat-icon">✓</span>
+              </div>
+
+              <strong class="stat-value" id="taskStat">
+                0/0
+              </strong>
+
+              <div class="progress-track">
+                <span id="taskProgress"></span>
+              </div>
+
+              <small>Completed work</small>
+
+            </div>
+
+
+            <div class="stat-card">
+
+              <div class="stat-top">
+                <span class="stat-label">Notes</span>
+                <span class="stat-icon">✎</span>
+              </div>
+
+              <strong class="stat-value" id="notesStat">
+                0
+              </strong>
+
+              <div class="mini-stat-line">
+                <span id="streakStat">0 day streak</span>
+              </div>
+
+              <small>Your knowledge library</small>
+
+            </div>
+
+          </section>
+
+
+          <div class="dashboard-layout">
+
+            <div class="dashboard-main">
+
+
+              <!-- TASKS -->
+
+              <section class="panel">
+
+                <div class="panel-header">
+
+                  <div>
+                    <span class="section-kicker">MY DAY</span>
+                    <h3>Today's tasks</h3>
+                  </div>
+
+                  <button class="text-button" id="openTasks" type="button">
+                    View all →
+                  </button>
+
+                </div>
+
+                <div class="task-preview-list" id="dashboardTasks"></div>
+
+              </section>
+
+
+              <!-- MOTIVATION -->
+
+              <section class="motivation-card">
+
+                <div class="motivation-glow"></div>
+
+                <div class="motivation-content">
+
+                  <span class="section-kicker">
+                    DAILY VIBE
+                  </span>
+
+                  <p id="motivationText">
+                    Don't wait for the perfect day.
+                    Build one.
+                  </p>
+
+                  <button class="mini-outline" id="newMotivation" type="button">
+                    New vibe ↻
+                  </button>
+
+                </div>
+
+                <div class="motivation-symbol">
+                  ✦
+                </div>
+
+              </section>
+
+
+              <!-- BRAIN DUMP -->
+
+              <section class="panel brain-panel">
+
+                <div class="panel-header">
+
+                  <div>
+                    <span class="section-kicker">
+                      BRAIN DUMP
+                    </span>
+
+                    <h3>
+                      Get it out of your head.
+                    </h3>
+                  </div>
+
+                  <span class="live-dot">
+                    LIVE
+                  </span>
+
+                </div>
+
+                <textarea
+                  id="brainDump"
+                  maxlength="1000"
+                  placeholder="Ideas, reminders, random thoughts..."
+                ></textarea>
+
+                <div class="brain-footer">
+
+                  <span id="brainCount">
+                    0 / 1000
+                  </span>
+
+                  <button class="primary-button small" id="saveBrain" type="button">
+                    Save thought
+                  </button>
+
+                </div>
+
+              </section>
+
+
+              <!-- RECENT NOTES -->
+
+              <section class="panel">
+
+                <div class="panel-header">
+
+                  <div>
+                    <span class="section-kicker">
+                      SECOND BRAIN
+                    </span>
+
+                    <h3>
+                      Recent notes
+                    </h3>
+                  </div>
+
+                  <button class="text-button" id="openNotes" type="button">
+                    Open notes →
+                  </button>
+
+                </div>
+
+                <div class="mini-note-grid" id="recentNotes"></div>
+
+              </section>
+
+            </div>
+
+
+            <aside class="dashboard-side">
+
+
+              <!-- FOCUS -->
+
+              <section class="side-card focus-preview">
+
+                <div class="side-card-head">
+
+                  <div>
+                    <span class="section-kicker">
+                      DEEP WORK
+                    </span>
+
+                    <h3>
+                      Focus timer
+                    </h3>
+                  </div>
+
+                  <span class="focus-live">
+                    FOCUS
+                  </span>
+
+                </div>
+
+                <div class="small-timer" id="smallTimer">
+                  25:00
+                </div>
+
+                <button class="primary-button full" id="smallFocusButton" type="button">
+                  Start session
+                </button>
+
+              </section>
+
+
+              <!-- STICKY PREVIEW -->
+
+              <section class="sticky-preview-column">
+
+                <div class="side-card-head">
+
+                  <div>
+                    <span class="section-kicker">
+                      IMPORTANT
+                    </span>
+
+                    <h3>
+                      Sticky Space
+                    </h3>
+                  </div>
+
+                  <span class="sticky-count" id="stickyCount">
+                    0
+                  </span>
+
+                </div>
+
+                <div class="sticky-preview-stack" id="dashboardStickyPreview"></div>
+
+                <button class="primary-button full" id="openSticky" type="button">
+                  Open Sticky Space
+                </button>
+
+              </section>
+
+
+              <!-- PLANNER -->
+
+              <section class="side-card schedule-card">
+
+                <div class="side-card-head">
+
+                  <div>
+                    <span class="section-kicker">
+                      UP NEXT
+                    </span>
+
+                    <h3>
+                      Plan your week
+                    </h3>
+                  </div>
+
+                </div>
+
+                <div class="schedule-row">
+                  <span class="schedule-dot purple"></span>
+
+                  <div>
+                    <strong>Study block</strong>
+                    <small>Protect the next hour.</small>
+                  </div>
+
+                  <span class="schedule-time">
+                    Now
+                  </span>
+                </div>
+
+                <div class="schedule-row">
+                  <span class="schedule-dot blue"></span>
+
+                  <div>
+                    <strong>Review</strong>
+                    <small>Refresh what you learned.</small>
+                  </div>
+
+                  <span class="schedule-time">
+                    Later
+                  </span>
+                </div>
+
+                <button class="ghost-button full" id="openPlanner" type="button">
+                  Open planner
+                </button>
+
+              </section>
+
+
+              <!-- VIBE -->
+
+              <section class="side-card vibe-card">
+
+                <span class="section-kicker">
+                  YOUR MODE
+                </span>
+
+                <strong>
+                  Less noise.<br>
+                  More output.
+                </strong>
+
+                <button class="vibe-button" id="vibeButton" type="button">
+                  ✦
+                </button>
+
+              </section>
+
+            </aside>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           TASKS
+      ====================================================== -->
+
+      <section class="page" id="tasksPage">
+
+        <div class="page-shell">
+
+          <div class="page-intro">
+
+            <div>
+              <span class="section-kicker">MY DAY</span>
+
+              <h2>
+                Tasks that move you forward.
+              </h2>
+
+              <p>
+                Keep today's work simple, clear and actionable.
+              </p>
+            </div>
+
+            <button class="primary-button" id="newTaskButton" type="button">
+              ＋ New task
+            </button>
+
+          </div>
+
+
+          <div class="task-page-grid">
+
+            <section class="panel">
+
+              <div class="panel-header">
+
+                <div>
+                  <span class="section-kicker">
+                    TASK LIST
+                  </span>
+
+                  <h3 id="taskCountText">
+                    0 tasks
+                  </h3>
+                </div>
+
+              </div>
+
+              <div class="full-task-list" id="taskList"></div>
+
+            </section>
+
+
+            <aside class="side-card task-side-tip">
+
+              <span class="section-kicker">
+                MINDSET
+              </span>
+
+              <h3>
+                Small wins compound.
+              </h3>
+
+              <p>
+                You don't need a perfect plan.
+                You need the next useful action.
+              </p>
+
+              <div class="tip-stat">
+
+                <strong id="taskSideDone">
+                  0
+                </strong>
+
+                <span>
+                  completed
+                </span>
+
+              </div>
+
+            </aside>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           NOTES
+      ====================================================== -->
+
+      <section class="page" id="notesPage">
+
+        <div class="page-shell">
+
+          <div class="page-intro">
+
+            <div>
+              <span class="section-kicker">
+                SECOND BRAIN
+              </span>
+
+              <h2>
+                Your knowledge, your way.
+              </h2>
+
+              <p>
+                Store study notes, formulas, ideas and useful knowledge.
+              </p>
+            </div>
+
+            <button class="primary-button" id="newNoteButton" type="button">
+              ＋ New note
+            </button>
+
+          </div>
+
+
+          <div class="notes-toolbar">
+
+            <div class="search-input-wrap">
+
+              <span>⌕</span>
+
+              <input
+                id="noteSearch"
+                type="text"
+                placeholder="Search notes..."
+              >
+
+            </div>
+
+
+            <div class="filter-row">
+
+              <button class="filter active" data-filter="all" type="button">
+                All
+              </button>
+
+              <button class="filter" data-filter="study" type="button">
+                Study
+              </button>
+
+              <button class="filter" data-filter="coding" type="button">
+                Coding
+              </button>
+
+              <button class="filter" data-filter="ideas" type="button">
+                Ideas
+              </button>
+
+              <button class="filter" data-filter="personal" type="button">
+                Personal
+              </button>
+
+              <button class="filter" data-filter="pinned" type="button">
+                Pinned
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="notes-layout">
+
+            <section>
+
+              <div class="notes-stats">
+
+                <div class="note-stat">
+                  <strong id="totalNotes">0</strong>
+                  <span>Total notes</span>
+                </div>
+
+                <div class="note-stat">
+                  <strong id="pinnedNotes">0</strong>
+                  <span>Pinned</span>
+                </div>
+
+                <div class="note-stat">
+                  <strong id="weekNotes">0</strong>
+                  <span>This week</span>
+                </div>
+
+              </div>
+
+              <div class="note-grid" id="noteGrid"></div>
+
+            </section>
+
+
+            <aside class="notes-side">
+
+              <div class="side-card">
+
+                <span class="section-kicker">
+                  QUICK NOTE
+                </span>
+
+                <textarea
+                  id="quickNote"
+                  placeholder="Write something quick..."
+                ></textarea>
+
+                <button class="primary-button full" id="saveQuickNote" type="button">
+                  Save quick note
+                </button>
+
+              </div>
+
+
+              <div class="side-card">
+
+                <span class="section-kicker">
+                  NOTE COLORS
+                </span>
+
+                <div class="vibe-filter-row">
+
+                  <button class="vibe-filter active" data-vibe="all" type="button">
+                    All
+                  </button>
+
+                  <button class="vibe-filter" data-vibe="purple" type="button">
+                    Purple
+                  </button>
+
+                  <button class="vibe-filter" data-vibe="blue" type="button">
+                    Blue
+                  </button>
+
+                  <button class="vibe-filter" data-vibe="pink" type="button">
+                    Pink
+                  </button>
+
+                  <button class="vibe-filter" data-vibe="green" type="button">
+                    Green
+                  </button>
+
+                </div>
+
+              </div>
+
+            </aside>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           PLANNER
+      ====================================================== -->
+
+      <section class="page" id="plannerPage">
+
+        <div class="page-shell">
+
+          <div class="page-intro">
+
+            <div>
+              <span class="section-kicker">
+                PLANNER
+              </span>
+
+              <h2>
+                See the bigger picture.
+              </h2>
+
+              <p>
+                Create breathing room around your goals.
+              </p>
+            </div>
+
+            <button class="ghost-button" id="todayButton" type="button">
+              Today
+            </button>
+
+          </div>
+
+
+          <section class="calendar-panel">
+
+            <div class="calendar-header">
+
+              <button class="calendar-nav" id="prevMonth" type="button">
+                ‹
+              </button>
+
+              <div>
+                <span class="section-kicker">
+                  MONTH VIEW
+                </span>
+
+                <h3 id="calendarTitle"></h3>
+              </div>
+
+              <button class="calendar-nav" id="nextMonth" type="button">
+                ›
+              </button>
+
+            </div>
+
+
+            <div class="calendar-grid calendar-weekdays">
+
+              <span>Mon</span>
+              <span>Tue</span>
+              <span>Wed</span>
+              <span>Thu</span>
+              <span>Fri</span>
+              <span>Sat</span>
+              <span>Sun</span>
+
+            </div>
+
+
+            <div class="calendar-grid" id="calendarGrid"></div>
+
+          </section>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           FOCUS
+      ====================================================== -->
+
+      <section class="page" id="focusPage">
+
+        <div class="page-shell focus-shell">
+
+          <div class="focus-page-content">
+
+            <span class="section-kicker">
+              DEEP WORK
+            </span>
+
+            <h2>
+              One task.<br>
+              <span>Full attention.</span>
+            </h2>
+
+            <p>
+              Choose a session and stay with it.
+            </p>
+
+
+            <div class="big-timer" id="bigTimer">
+              25:00
+            </div>
+
+
+            <div class="timer-mode-row">
+
+              <button class="timer-mode active" data-minutes="25" type="button">
+                25 min
+              </button>
+
+              <button class="timer-mode" data-minutes="50" type="button">
+                50 min
+              </button>
+
+              <button class="timer-mode" data-minutes="90" type="button">
+                90 min
+              </button>
+
+            </div>
+
+
+            <div class="focus-actions">
+
+              <button class="primary-button" id="startFocus" type="button">
+                Start focus
+              </button>
+
+              <button class="ghost-button" id="resetFocus" type="button">
+                Reset
+              </button>
+
+            </div>
+
+
+            <div class="focus-note">
+              ✦
+              Protect your attention.
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           STICKY SPACE
+      ====================================================== -->
+
+      <section class="page" id="stickyPage">
+
+        <div class="page-shell">
+
+          <div class="page-intro">
+
+            <div>
+
+              <span class="section-kicker">
+                IMPORTANT SPACE
+              </span>
+
+              <h2>
+                Your wall. Your rules.
+              </h2>
+
+              <p>
+                Tasks, dreams, formulas, reminders, ideas — keep them visible.
+              </p>
+
+            </div>
+
+            <button class="primary-button" id="newStickyButton" type="button">
+              ＋ Add sticky
+            </button>
+
+          </div>
+
+
+          <div class="sticky-controls-panel">
+
+            <div>
+
+              <span class="section-kicker">
+                WALL LOOK
+              </span>
+
+              <strong>
+                Customize your sticky space
+              </strong>
+
+            </div>
+
+
+            <div class="sticky-wall-colors">
+
+              <button class="wall-theme active" data-wall-theme="paper" type="button">
+                Paper
+              </button>
+
+              <button class="wall-theme" data-wall-theme="lavender" type="button">
+                Lavender
+              </button>
+
+              <button class="wall-theme" data-wall-theme="blue" type="button">
+                Ocean
+              </button>
+
+              <button class="wall-theme" data-wall-theme="mint" type="button">
+                Mint
+              </button>
+
+              <button class="wall-theme" data-wall-theme="sunset" type="button">
+                Sunset
+              </button>
+
+              <button class="wall-theme" data-wall-theme="night" type="button">
+                Night
+              </button>
+
+            </div>
+
+
+            <div class="sticky-pattern-controls">
+
+              <span>
+                Pattern
+              </span>
+
+              <button class="pattern-button active" data-pattern="grid" type="button">
+                Grid
+              </button>
+
+              <button class="pattern-button" data-pattern="dots" type="button">
+                Dots
+              </button>
+
+              <button class="pattern-button" data-pattern="plain" type="button">
+                Plain
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="sticky-layout">
+
+            <section class="sticky-wall-panel">
+
+              <div class="sticky-wall-header">
+
+                <div>
+
+                  <span class="section-kicker">
+                    STICKY WALL
+                  </span>
+
+                  <h3>
+                    Keep important stuff visible.
+                  </h3>
+
+                </div>
+
+                <span class="fixed-size-label">
+                  CUSTOM NOTE CARDS
+                </span>
+
+              </div>
+
+
+              <div
+                class="sticky-wall wall-paper pattern-grid"
+                id="stickyWall"
+              ></div>
+
+            </section>
+
+
+            <aside class="writing-desk">
+
+              <div class="desk-header">
+
+                <div>
+
+                  <span class="section-kicker">
+                    STUDY DESK
+                  </span>
+
+                  <h3>
+                    Write. Draw. Think.
+                  </h3>
+
+                </div>
+
+                <button class="ghost-mini" id="clearCanvas" type="button">
+                  Clear
+                </button>
+
+              </div>
+
+
+              <div class="tool-group">
+
+                <span class="tool-title">
+                  Tool
+                </span>
+
+                <div class="tool-row">
+
+                  <button class="drawing-tool active" data-tool="pen" type="button">
+                    <span class="tool-preview pen-preview"></span>
+                    Pen
+                  </button>
+
+                  <button class="drawing-tool" data-tool="pencil" type="button">
+                    <span class="tool-preview pencil-preview"></span>
+                    Pencil
+                  </button>
+
+                  <button class="drawing-tool" data-tool="marker" type="button">
+                    <span class="tool-preview marker-preview"></span>
+                    Marker
+                  </button>
+
+                </div>
+
+              </div>
+
+
+              <div class="tool-group">
+
+                <span class="tool-title">
+                  Ink color
+                </span>
+
+                <div class="color-row">
+
+                  <button class="ink-color active" data-ink="#161616" style="--ink:#161616" type="button"></button>
+                  <button class="ink-color" data-ink="#6d4aff" style="--ink:#6d4aff" type="button"></button>
+                  <button class="ink-color" data-ink="#2f80ed" style="--ink:#2f80ed" type="button"></button>
+                  <button class="ink-color" data-ink="#ef4d9a" style="--ink:#ef4d9a" type="button"></button>
+                  <button class="ink-color" data-ink="#18a86b" style="--ink:#18a86b" type="button"></button>
+                  <button class="ink-color" data-ink="#f59e0b" style="--ink:#f59e0b" type="button"></button>
+                  <button class="ink-color" data-ink="#ef4444" style="--ink:#ef4444" type="button"></button>
+
+                </div>
+
+              </div>
+
+
+              <div class="canvas-wrap">
+
+                <div class="canvas-tip">
+                  Use mouse or trackpad.
+                </div>
+
+                <canvas id="drawingCanvas" width="650" height="430"></canvas>
+
+              </div>
+
+
+              <button class="primary-button full" id="downloadCanvas" type="button">
+                Save study pad
+              </button>
+
+            </aside>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           RESOURCES
+      ====================================================== -->
+
+      <section class="page" id="resourcesPage">
+
+        <div class="page-shell">
+
+          <div class="page-intro">
+
+            <div>
+
+              <span class="section-kicker">
+                RESOURCE HUB
+              </span>
+
+              <h2>
+                Your useful stuff, one place.
+              </h2>
+
+              <p>
+                Keep your favourite learning destinations close.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="resource-grid">
+
+            <a class="resource-card" href="https://www.google.com" target="_blank">
+              <span class="resource-icon">⌕</span>
+              <strong>Google</strong>
+              <small>Search and research</small>
+            </a>
+
+            <a class="resource-card" href="https://github.com" target="_blank">
+              <span class="resource-icon">{ }</span>
+              <strong>GitHub</strong>
+              <small>Code and projects</small>
+            </a>
+
+            <a class="resource-card" href="https://www.youtube.com" target="_blank">
+              <span class="resource-icon">▶</span>
+              <strong>YouTube</strong>
+              <small>Learn visually</small>
+            </a>
+
+            <a class="resource-card" href="https://developer.mozilla.org" target="_blank">
+              <span class="resource-icon">MDN</span>
+              <strong>MDN Web Docs</strong>
+              <small>Web reference</small>
+            </a>
+
+            <a class="resource-card" href="https://www.wikipedia.org" target="_blank">
+              <span class="resource-icon">W</span>
+              <strong>Wikipedia</strong>
+              <small>General knowledge</small>
+            </a>
+
+            <a class="resource-card" href="https://www.coursera.org" target="_blank">
+              <span class="resource-icon">◈</span>
+              <strong>Courses</strong>
+              <small>Learning paths</small>
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           PROFILE
+      ====================================================== -->
+
+      <section class="page" id="profilePage">
+
+        <div class="page-shell">
+
+
+          <section
+            class="profile-hero"
+            id="profileHero"
+          >
+
+            <div class="profile-hero-glow"></div>
+            <div class="profile-hero-noise"></div>
+
+            <div class="profile-hero-content">
+
+              <div class="profile-avatar-column">
+
+                <div
+                  class="avatar profile-avatar"
+                  id="profileAvatar"
+                >
+                  S
+                </div>
+
+                <span class="profile-status-pill" id="profileStatusPill">
+                  In my zone
+                </span>
+
+              </div>
+
+
+              <div class="profile-head-info">
+
+                <span class="section-kicker">
+                  STUDENT IDENTITY
+                </span>
+
+                <h2 id="profileNameDisplay">
+                  Your Name
+                </h2>
+
+                <p id="profileCourseDisplay">
+                  Student • College
+                </p>
+
+                <div class="profile-quote" id="profileQuote">
+                  Build something you're proud of.
+                </div>
+
+              </div>
+
+
+              <button
+                class="primary-button profile-edit-button"
+                id="editProfile"
+                type="button"
+              >
+                Customize profile
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <section class="profile-stats">
+
+            <div>
+              <strong id="profileNotes">0</strong>
+              <span>Notes</span>
+            </div>
+
+            <div>
+              <strong id="profileTasks">0</strong>
+              <span>Tasks done</span>
+            </div>
+
+            <div>
+              <strong id="profileFocus">0m</strong>
+              <span>Focus time</span>
+            </div>
+
+            <div>
+              <strong id="profileStickies">0</strong>
+              <span>Stickies</span>
+            </div>
+
+          </section>
+
+
+          <div class="profile-grid">
+
+
+            <!-- ABOUT -->
+
+            <section class="panel profile-info-card">
+
+              <div class="profile-section-heading">
+
+                <div>
+                  <span class="section-kicker">
+                    ABOUT ME
+                  </span>
+
+                  <h3>
+                    A little window into my world.
+                  </h3>
+                </div>
+
+                <span class="profile-star">
+                  ✦
+                </span>
+
+              </div>
+
+
+              <div class="profile-about-box">
+
+                <p id="profileBio">
+                  Add a short bio.
+                </p>
+
+              </div>
+
+
+              <div class="info-grid">
+
+                <div class="info-item">
+                  <span>College / School</span>
+                  <strong id="profileCollege">Not added</strong>
+                </div>
+
+                <div class="info-item">
+                  <span>Course</span>
+                  <strong id="profileCourseTwo">Not added</strong>
+                </div>
+
+                <div class="info-item">
+                  <span>Year</span>
+                  <strong id="profileYear">Not added</strong>
+                </div>
+
+                <div class="info-item">
+                  <span>Semester</span>
+                  <strong id="profileSemester">Not added</strong>
+                </div>
+
+              </div>
+
+
+              <div class="skill-section">
+
+                <span class="section-kicker">
+                  SKILLS
+                </span>
+
+                <div class="skill-list" id="profileSkills"></div>
+
+              </div>
+
+            </section>
+
+
+            <!-- RIGHT -->
+
+            <aside class="profile-side-column">
+
+
+              <!-- CURRENTLY -->
+
+              <section class="side-card profile-current-card">
+
+                <span class="section-kicker">
+                  CURRENTLY
+                </span>
+
+                <h3>
+                  What I'm building.
+                </h3>
+
+                <p id="profileGoalText">
+                  Add your current goals.
+                </p>
+
+                <div class="goal-list" id="profileGoals"></div>
+
+              </section>
+
+
+              <!-- LINKS -->
+
+              <section class="side-card">
+
+                <span class="section-kicker">
+                  ONLINE
+                </span>
+
+                <h3>
+                  Find me online.
+                </h3>
+
+
+                <a href="#" class="social-link" id="githubLink" target="_blank">
+                  <span>
+                    GitHub
+                  </span>
+                  <span>
+                    ↗
+                  </span>
+                </a>
+
+
+                <a href="#" class="social-link" id="linkedinLink" target="_blank">
+                  <span>
+                    LinkedIn
+                  </span>
+                  <span>
+                    ↗
+                  </span>
+                </a>
+
+
+                <div class="email-box">
+
+                  <span>
+                    Email
+                  </span>
+
+                  <strong id="profileEmail">
+                    Not added
+                  </strong>
+
+                </div>
+
+              </section>
+
+
+              <!-- MINI ID -->
+
+              <section class="side-card profile-mini-card">
+
+                <div class="mini-id-ring">
+                  <span>DF</span>
+                </div>
+
+                <div>
+                  <span class="section-kicker">
+                    DAYFLOW MEMBER
+                  </span>
+
+                  <strong>
+                    Learning. Building. Evolving.
+                  </strong>
+                </div>
+
+              </section>
+
+            </aside>
+
+          </div>
+
+
+          <!-- PROFILE BOTTOM -->
+
+          <section class="profile-bottom-grid">
+
+            <div class="profile-metric-card">
+
+              <span class="section-kicker">
+                IDENTITY
+              </span>
+
+              <strong id="profileIdentityText">
+                Student
+              </strong>
+
+              <small>
+                Keep becoming.
+              </small>
+
+            </div>
+
+
+            <div class="profile-metric-card accent-card">
+
+              <span class="section-kicker">
+                QUOTE
+              </span>
+
+              <strong id="profileBottomQuote">
+                Keep going.
+              </strong>
+
+              <small>
+                Your profile, your energy.
+              </small>
+
+            </div>
+
+
+            <div class="profile-metric-card">
+
+              <span class="section-kicker">
+                FLOW
+              </span>
+
+              <strong>
+                DayFlow
+              </strong>
+
+              <small>
+                Designed around your life.
+              </small>
+
+            </div>
+
+          </section>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- =====================================================
+       PROFILE MODAL
+  ====================================================== -->
+
+  <div class="modal-layer" id="profileModal">
+
+    <div class="modal-card profile-modal">
+
+      <button class="modal-close" data-close="profileModal" type="button">
+        ×
+      </button>
+
+      <span class="section-kicker">
+        PERSONALIZE
+      </span>
+
+      <h2>
+        Make your profile yours.
+      </h2>
+
+
+      <form id="profileForm">
+
+
+        <div class="profile-photo-section">
+
+          <div class="avatar modal-avatar" id="modalAvatar">
+            S
+          </div>
+
+          <label class="upload-photo">
+            Change photo
+            <input type="file" id="profileImage" accept="image/*">
+          </label>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+          <label>
+            <span>Name</span>
+            <input id="profileNameInput" type="text" placeholder="Your name">
+          </label>
+
+
+          <label>
+            <span>Status</span>
+            <input id="profileStatusInput" type="text" placeholder="In my zone">
+          </label>
+
+
+          <label>
+            <span>Email</span>
+            <input id="profileEmailInput" type="email" placeholder="you@email.com">
+          </label>
+
+
+          <label>
+            <span>College / School</span>
+            <input id="profileCollegeInput" type="text" placeholder="Your college or school">
+          </label>
+
+
+          <label>
+            <span>Course</span>
+            <input id="profileCourseInput" type="text" placeholder="Your course / class">
+          </label>
+
+
+          <label>
+            <span>Year</span>
+            <input id="profileYearInput" type="text" placeholder="Example: 2nd Year">
+          </label>
+
+
+          <label>
+            <span>Semester</span>
+            <input id="profileSemesterInput" type="text" placeholder="Example: 4th Semester">
+          </label>
+
+
+          <label class="full-field">
+            <span>Bio</span>
+            <textarea id="profileBioInput" placeholder="Tell us a little about yourself..."></textarea>
+          </label>
+
+
+          <label class="full-field">
+            <span>Skills</span>
+            <input id="profileSkillsInput" type="text" placeholder="Python, Design, Writing, Mathematics...">
+          </label>
+
+
+          <label class="full-field">
+            <span>Goals</span>
+            <input id="profileGoalsInput" type="text" placeholder="Placement, project, exam, fitness, portfolio...">
+          </label>
+
+
+          <label class="full-field">
+            <span>Quote</span>
+            <input id="profileQuoteInput" type="text" placeholder="A line that feels like you">
+          </label>
+
+
+          <label>
+            <span>GitHub</span>
+            <input id="githubInput" type="url" placeholder="https://github.com/...">
+          </label>
+
+
+          <label>
+            <span>LinkedIn</span>
+            <input id="linkedinInput" type="url" placeholder="https://linkedin.com/in/...">
+          </label>
+
+        </div>
+
+
+        <div class="customizer-section">
+
+          <span class="section-kicker">
+            PROFILE COLORS
+          </span>
+
+          <div class="profile-color-row">
+
+            <button class="profile-color active" data-profile-color="violet" type="button"></button>
+            <button class="profile-color" data-profile-color="blue" type="button"></button>
+            <button class="profile-color" data-profile-color="pink" type="button"></button>
+            <button class="profile-color" data-profile-color="green" type="button"></button>
+            <button class="profile-color" data-profile-color="orange" type="button"></button>
+
+          </div>
+
+        </div>
+
+
+        <button class="primary-button full modal-submit" type="submit">
+          Save profile
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       APPEARANCE MODAL
+  ====================================================== -->
+
+  <div class="modal-layer" id="appearanceModal">
+
+    <div class="modal-card appearance-modal">
+
+      <button class="modal-close" data-close="appearanceModal" type="button">
+        ×
+      </button>
+
+      <span class="section-kicker">
+        DAYFLOW STUDIO
+      </span>
+
+      <h2>
+        Shape your workspace.
+      </h2>
+
+
+      <div class="appearance-block">
+
+        <div class="appearance-block-head">
+          <strong>Theme</strong>
+          <span>Pick your atmosphere.</span>
+        </div>
+
+
+        <div class="theme-grid">
+
+
+          <button class="theme-card active" data-theme-choice="light" type="button">
+            <span class="theme-preview preview-light"></span>
+            <strong>Light</strong>
+            <small>Clean & minimal</small>
+          </button>
+
+
+          <button class="theme-card" data-theme-choice="dark" type="button">
+            <span class="theme-preview preview-dark"></span>
+            <strong>Dark</strong>
+            <small>Deep & focused</small>
+          </button>
+
+
+          <button class="theme-card" data-theme-choice="transparent" type="button">
+            <span class="theme-preview preview-transparent"></span>
+            <strong>Glass</strong>
+            <small>Transparent</small>
+          </button>
+
+
+          <button class="theme-card" data-theme-choice="aurora" type="button">
+            <span class="theme-preview preview-aurora"></span>
+            <strong>Aurora</strong>
+            <small>Dreamy glow</small>
+          </button>
+
+
+          <button class="theme-card" data-theme-choice="midnight" type="button">
+            <span class="theme-preview preview-midnight"></span>
+            <strong>Midnight</strong>
+            <small>Ultra dark</small>
+          </button>
+
+
+          <button class="theme-card" data-theme-choice="ocean" type="button">
+            <span class="theme-preview preview-ocean"></span>
+            <strong>Ocean</strong>
+            <small>Cool & calm</small>
+          </button>
+
+
+          <button class="theme-card" data-theme-choice="rose" type="button">
+            <span class="theme-preview preview-rose"></span>
+            <strong>Rose</strong>
+            <small>Soft & expressive</small>
+          </button>
+
+
+          <button class="theme-card" data-theme-choice="paper" type="button">
+            <span class="theme-preview preview-paper"></span>
+            <strong>Paper</strong>
+            <small>Warm & classic</small>
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="appearance-block">
+
+        <div class="appearance-block-head">
+          <strong>Accent</strong>
+          <span>Choose your signature color.</span>
+        </div>
+
+
+        <div class="accent-row">
+
+          <button class="accent-choice active" data-accent="#6d4aff" style="--accent-choice:#6d4aff" type="button"></button>
+          <button class="accent-choice" data-accent="#2f80ed" style="--accent-choice:#2f80ed" type="button"></button>
+          <button class="accent-choice" data-accent="#ef4d9a" style="--accent-choice:#ef4d9a" type="button"></button>
+          <button class="accent-choice" data-accent="#18a86b" style="--accent-choice:#18a86b" type="button"></button>
+          <button class="accent-choice" data-accent="#f59e0b" style="--accent-choice:#f59e0b" type="button"></button>
+          <button class="accent-choice" data-accent="#ef4444" style="--accent-choice:#ef4444" type="button"></button>
+
+        </div>
+
+      </div>
+
+
+      <div class="appearance-block">
+
+        <div class="appearance-block-head">
+          <strong>Interface</strong>
+          <span>Make the experience feel right.</span>
+        </div>
+
+
+        <div class="appearance-switch-row">
+
+          <button class="interface-option active" id="densityComfortable" type="button">
+            <strong>Spacious</strong>
+            <small>More breathing room</small>
+          </button>
+
+          <button class="interface-option" id="densityCompact" type="button">
+            <strong>Compact</strong>
+            <small>More information</small>
+          </button>
+
+        </div>
+
+
+        <div class="appearance-switch-row">
+
+          <button class="interface-option active" id="motionOn" type="button">
+            <strong>Animations On</strong>
+            <small>Full DayFlow motion</small>
+          </button>
+
+          <button class="interface-option" id="motionOff" type="button">
+            <strong>Reduced Motion</strong>
+            <small>Calmer interface</small>
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       SEARCH
+  ====================================================== -->
+
+  <div class="modal-layer" id="searchModal">
+
+    <div class="modal-card search-modal">
+
+      <button class="modal-close" data-close="searchModal" type="button">
+        ×
+      </button>
+
+      <span class="section-kicker">
+        QUICK FIND
+      </span>
+
+      <h2>
+        Search your workspace.
+      </h2>
+
+
+      <div class="search-input-wrap large">
+
+        <span>⌕</span>
+
+        <input
+          id="globalSearch"
+          type="text"
+          placeholder="Search tasks, notes..."
+        >
+
+      </div>
+
+
+      <div class="search-results" id="searchResults">
+        Start typing to search.
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       CREATE
+  ====================================================== -->
+
+  <div class="modal-layer" id="createModal">
+
+    <div class="modal-card create-modal">
+
+      <button class="modal-close" data-close="createModal" type="button">
+        ×
+      </button>
+
+      <span class="section-kicker">
+        CREATE
+      </span>
+
+      <h2>
+        What are we making?
+      </h2>
+
+
+      <div class="create-grid">
+
+        <button id="createTask" type="button">
+          <span>✓</span>
+          <strong>Task</strong>
+          <small>Something to finish.</small>
+        </button>
+
+
+        <button id="createNote" type="button">
+          <span>✎</span>
+          <strong>Note</strong>
+          <small>Something to remember.</small>
+        </button>
+
+
+        <button id="createPlanner" type="button">
+          <span>◫</span>
+          <strong>Planner</strong>
+          <small>See your calendar.</small>
+        </button>
+
+
+        <button id="createSticky" type="button">
+          <span>▣</span>
+          <strong>Sticky</strong>
+          <small>Pin an important thought.</small>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       NOTE MODAL
+  ====================================================== -->
+
+  <div class="modal-layer" id="noteModal">
+
+    <div class="modal-card note-modal">
+
+      <button class="modal-close" data-close="noteModal" type="button">
+        ×
+      </button>
+
+      <span class="section-kicker">
+        NOTE
+      </span>
+
+      <h2 id="noteModalTitle">
+        New note
+      </h2>
+
+      <input type="hidden" id="editingNoteId">
+
+
+      <label>
+        <span>Title</span>
+        <input id="noteTitle" type="text" placeholder="Give your note a title">
+      </label>
+
+
+      <div class="form-grid">
+
+        <label>
+          <span>Category</span>
+
+          <select id="noteCategory">
+
+            <option value="study">
+              Study
+            </option>
+
+            <option value="coding">
+              Coding
+            </option>
+
+            <option value="ideas">
+              Ideas
+            </option>
+
+            <option value="personal">
+              Personal
+            </option>
+
+          </select>
+
+        </label>
+
+
+        <label class="checkbox-label">
+
+          <input type="checkbox" id="notePinned">
+
+          <span>
+            Pin this note
+          </span>
+
+        </label>
+
+      </div>
+
+
+      <div class="note-color-selector">
+
+        <span>
+          Note color
+        </span>
+
+        <div class="note-color-row">
+
+          <button class="color-choice active" data-color="purple" type="button"></button>
+          <button class="color-choice" data-color="blue" type="button"></button>
+          <button class="color-choice" data-color="pink" type="button"></button>
+          <button class="color-choice" data-color="green" type="button"></button>
+
+        </div>
+
+      </div>
+
+
+      <textarea
+        id="noteContent"
+        maxlength="3000"
+        placeholder="Write your note..."
+      ></textarea>
+
+
+      <div class="modal-footer">
+
+        <span id="noteCharacters">
+          0 / 3000
+        </span>
+
+        <button class="primary-button" id="saveNote" type="button">
+          Save note
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       TASK MODAL
+  ====================================================== -->
+
+  <div class="modal-layer" id="taskModal">
+
+    <div class="modal-card task-modal">
+
+      <button class="modal-close" data-close="taskModal" type="button">
+        ×
+      </button>
+
+      <span class="section-kicker">
+        TASK
+      </span>
+
+      <h2>
+        New task
+      </h2>
+
+
+      <label>
+        <span>Task title</span>
+        <input id="taskTitle" type="text" placeholder="What needs to happen?">
+      </label>
+
+
+      <div class="form-grid">
+
+        <label>
+
+          <span>
+            Priority
+          </span>
+
+          <select id="taskPriority">
+
+            <option value="high">
+              High
+            </option>
+
+            <option value="medium" selected>
+              Medium
+            </option>
+
+            <option value="low">
+              Low
+            </option>
+
+          </select>
+
+        </label>
+
+
+        <label>
+
+          <span>
+            Category
+          </span>
+
+          <select id="taskCategory">
+
+            <option value="study">
+              Study
+            </option>
+
+            <option value="coding">
+              Coding
+            </option>
+
+            <option value="personal">
+              Personal
+            </option>
+
+            <option value="project">
+              Project
+            </option>
+
+          </select>
+
+        </label>
+
+      </div>
+
+
+      <button class="primary-button full modal-submit" id="saveTask" type="button">
+        Add task
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       STICKY MODAL
+  ====================================================== -->
+
+  <div class="modal-layer" id="stickyModal">
+
+    <div class="modal-card sticky-modal">
+
+      <button class="modal-close" data-close="stickyModal" type="button">
+        ×
+      </button>
+
+      <span class="section-kicker">
+        STICKY NOTE
+      </span>
+
+      <h2 id="stickyModalTitle">
+        Add a sticky.
+      </h2>
+
+
+      <input type="hidden" id="editingStickyId">
+
+
+      <label>
+        <span>Title</span>
+        <input id="stickyTitle" type="text" placeholder="Example: Learn recursion">
+      </label>
+
+
+      <div class="form-grid">
+
+        <label>
+
+          <span>
+            Type
+          </span>
+
+          <select id="stickyType">
+
+            <option value="task">Task</option>
+            <option value="dream">Dream</option>
+            <option value="formula">Formula</option>
+            <option value="reminder">Reminder</option>
+            <option value="idea">Idea</option>
+
+          </select>
+
+        </label>
+
+
+        <label>
+
+          <span>
+            Writing style
+          </span>
+
+          <select id="stickyStyle">
+
+            <option value="clean">
+              Clean
+            </option>
+
+            <option value="hand">
+              Handwritten
+            </option>
+
+            <option value="mono">
+              Mono
+            </option>
+
+          </select>
+
+        </label>
+
+      </div>
+
+
+      <label>
+        <span>Sticky color</span>
+      </label>
+
+
+      <div class="sticky-color-selector">
+
+        <button class="sticky-color active" data-sticky-color="yellow" type="button"></button>
+        <button class="sticky-color" data-sticky-color="pink" type="button"></button>
+        <button class="sticky-color" data-sticky-color="blue" type="button"></button>
+        <button class="sticky-color" data-sticky-color="green" type="button"></button>
+        <button class="sticky-color" data-sticky-color="purple" type="button"></button>
+        <button class="sticky-color" data-sticky-color="orange" type="button"></button>
+        <button class="sticky-color" data-sticky-color="red" type="button"></button>
+        <button class="sticky-color" data-sticky-color="cream" type="button"></button>
+
+      </div>
+
+
+      <label>
+
+        <span>
+          Write something
+        </span>
+
+        <textarea
+          id="stickyContent"
+          maxlength="800"
+          placeholder="Tasks, dreams, formulas, reminders..."
+        ></textarea>
+
+      </label>
+
+
+      <div class="modal-footer">
+
+        <span>
+          Custom note card
+        </span>
+
+        <button class="primary-button" id="saveSticky" type="button">
+          Save sticky
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       TOAST
+  ====================================================== -->
+
+  <div class="toast" id="toast">
+
+    <span class="toast-dot"></span>
+
+    <span id="toastText">
+      Saved
+    </span>
+
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
